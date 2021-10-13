@@ -1,0 +1,155 @@
+PARSING:- 
+
+	Parsing is a phenomenon of converting any data type to the string like format.
+
+parser:-
+	-->  It is a translator which will parse our data into specified format.
+	--> There are many types of parsers available in market.
+		1) Lexical Parser
+		2) yacc parser
+		3) xml parser
+		4) json parser
+		5) pickle parser 
+
+		--> lexical and yacc parser are mainly used in system softwares.
+		--> xml parser, json parser and pickle parser are used in application softwares.
+		--> xml parser is difficult so developers are not preferring it.
+
+
+
+JSON PARSING TECHNIQUE:- 
+		--> JSON stands for Java Script Object Notation.
+		--> It is a notation where data will be in the form of java script object which is completely silimar to a string.
+		--> By using JSON parser, we can convert the normal data into JSON format OR JSON data into normal format with no data loss.
+
+	   DATA                         JSON PARSER                       JSON DATA          	
+	_____________                  ______________                   ______________	
+	|           |  dumping         |             |                  |             |
+        |	    |  ------->        |             |                  |             |
+	|           |                  |             |                  |             |
+        |           |                  |             |                  |             |
+        |	    |                  |             |     <------      |             |
+	|           |                  |             |     Loading      |             |
+	|___________|                  |_____________|                  |_____________|
+
+
+	--> The process of giving the data to the parser is called DUMPING and it will be done by using dumps and dump function.
+
+	--> The process of converting data from json format to its native format is called as LOADING. This can be done using load and loads method.
+
+
+
+1) json.dumps    :-  It is a function used to convert the date into json format and returns the converted data.
+		
+		Syntax:-  
+			json.dumps(data)
+
+
+
+2) json.dump     :-  This is a function which will take the data, it will convert that data to json format and it will write that
+		       data into the specific file.
+
+		Syntax:- 
+			json.dump(data,FileObject)
+
+
+3) json.loads    :- It is a function used to convert the json data into its native format.
+
+		Syntax:-  json.loads(JSONdata)
+
+
+4) json.load     :- It is a function used to read the data from the json and convert it to its native format and gives that data to us.
+
+		Syntax:- 
+			json.load(FileObject)
+
+
+Ex., 1)  #program to write the list data into a file.
+   #craete a file json_demo.txt on desktop.
+import json
+fobj = open("C:\\Users\\QSP1\\Desktop\\json_demo.txt", "w")
+original_data=[10,"hai",11.7]
+
+json_data=json.dumps(original_data)
+fobj.write(json_data)
+print("successfully written the data")
+
+fobj.close()
+
+
+
+
+Output:- 
+
+successfully written the data
+
+
+
+Ex., 2)  #import json
+
+fobj = open("C:\\Users\\QSP1\\Desktop\\json_demo.txt", "r")
+json_data=fobj.read()
+
+original_data=json.loads(json_data)
+print("data read is", original_data)
+
+fobj.close()
+
+
+output:-   
+
+data read is [10, 'hai', 11.7]
+
+
+***************************************************************************************************************************
+
+PICKLE PARSING TECHNIQUE:- 
+		--> pickle is a data format which is used to store the data into a file.
+		--> Pickle data is in the form of unreadable binary format.
+		--> It is a phenomenon of converting the data into the encrypted format (Unreadable format).
+
+
+PICKEL PARSER:-  
+		--> It is an parser which is responsible for converting the data into the unreadable format which will be like a string.
+		--> To store pickle data we use a special file with an extension called ".pkl" .
+		--> The process of converting data into pickle format is called PICKLING and converting from pickled format to its native format
+			is called as UNPICKLING.
+		--> In order to work around practical we have to import a predefined library or a module by the name pickle itself.
+ 
+
+Ex., 1) 
+
+import pickle
+
+fobj = open("C:\\Users\\QSP1\\Desktop\\pickle.pkl", "wb")
+
+original_data=[10,"hai",11.7]
+
+pickle.dump(original_data,fobj)
+print("data written")
+fobj.close()
+
+Output:- 
+
+data written  
+	--> Open the file which you have created on desktop and observ that the dxata you entered will be stored there in encrypted format. 
+
+
+Ex., 2) 
+
+import pickle
+fobj = open("C:\\Users\\QSP1\\Desktop\\pickle.pkl", "rb")
+
+original_data=pickle.load(fobj)
+
+print("Original data is", original_data )
+
+
+fobj.close()
+
+	--> The user will be able to read the data in normal format after the unpickling. 
+
+
+Output:- 
+
+Original data is [10, 'hai', 11.7]
